@@ -24,7 +24,7 @@ const sendMessage = () => {
 }
 
 onMounted(() => {
-   socket = new WebSocket(`ws://${window.location.hostname}:8000/ws`);
+  socket = new WebSocket("wss://" + location.host + "/ws");
 
   socket.onmessage = (event) => {
     messages.value.push(event.data)
