@@ -1,12 +1,7 @@
-# Build de la app
-FROM node:20-alpine AS build
+# frontend/Dockerfile
+FROM node:20-alpine AS builder
 
 WORKDIR /app
 COPY . .
-RUN npm install && npm run build
-
-# Servidor estático
-FROM nginx:alpine
-
-COPY --from=build /app/dist /usr/share/nginx/html
-EXPOSE 80
+RUN npm install
+RUN npm run build
